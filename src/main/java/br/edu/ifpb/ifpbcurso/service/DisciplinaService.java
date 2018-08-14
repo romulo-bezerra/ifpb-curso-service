@@ -32,7 +32,7 @@ public class DisciplinaService {
         return disciplinaRepository.findAll();
     }
 
-    public Optional<Disciplina> buscarPorId(Integer id) {
+    public Optional<Disciplina> buscarPorId(Long id) {
         return disciplinaRepository.findById(id);
     }
 }

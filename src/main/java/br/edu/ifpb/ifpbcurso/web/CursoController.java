@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/curso")
+@RequestMapping("/api/ifpbcursoservice/curso")
 public class CursoController {
 
     private final CursoService cursoService;
