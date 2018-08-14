@@ -31,4 +31,30 @@ public class Curso {
         disciplinas = new ArrayList<>();
     }
 
+    public Curso(String nome, String abreviacao, int periodos, String pagina, String grandeAreaId, Unidade unidade) {
+        this.nome = nome;
+        this.abreviacao = abreviacao;
+        this.periodos = periodos;
+        this.pagina = pagina;
+        this.grandeAreaId = grandeAreaId;
+        this.unidade = unidade;
+    }
+
+    public boolean addDisciplina (Disciplina disciplina){
+        return disciplinas.add(disciplina);
+    }
+
+    @Override
+    public String toString() {
+        return "Curso{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", abreviacao='" + abreviacao + '\'' +
+                ", periodos=" + periodos +
+                ", pagina='" + pagina + '\'' +
+                ", grandeAreaId='" + grandeAreaId + '\'' +
+                ", disciplinas=" + disciplinas +
+                ", unidade=" + unidade +
+                '}';
+    }
 }

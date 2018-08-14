@@ -24,4 +24,29 @@ public class Disciplina {
     private int cargaHoraria;
     private int aulasSemana;
 
+    public Disciplina () {
+
+    }
+
+    public Disciplina(String nome, String abreviacao, int periodo, TipoDisciplina tipo, int cargaHoraria, int aulasSemana) {
+        this.nome = nome;
+        this.abreviacao = abreviacao;
+        this.periodo = periodo;
+        this.tipo = tipo;
+        this.cargaHoraria = cargaHoraria;
+        this.aulasSemana = aulasSemana;
+    }
+
+    @Override
+    public String toString() {
+        return "Disciplina{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", abreviacao='" + abreviacao + '\'' +
+                ", periodo=" + periodo +
+                ", tipo=" + tipo +
+                ", cargaHoraria=" + cargaHoraria +
+                ", aulasSemana=" + aulasSemana +
+                '}';
+    }
 }

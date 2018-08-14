@@ -18,4 +18,19 @@ public class Unidade {
     private Long id;
     private String nome;
 
+    public Unidade() {
+
+    }
+
+    public Unidade(String nome) {
+        this.nome = nome;
+    }
+
+    @Override
+    public String toString() {
+        return "Unidade{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                '}';
+    }
 }
