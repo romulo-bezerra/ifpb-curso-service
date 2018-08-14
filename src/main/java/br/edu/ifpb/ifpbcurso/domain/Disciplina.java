@@ -9,9 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
 @Getter
 @Setter
+@Entity
 public class Disciplina {
 
     @Id

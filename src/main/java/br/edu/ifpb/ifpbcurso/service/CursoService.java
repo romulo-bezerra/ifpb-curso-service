@@ -32,7 +32,7 @@ public class CursoService {
         return cursoRepository.findAll();
     }
 
-    public Optional<Curso> buscarPorId(Integer id) {
+    public Optional<Curso> buscarPorId(Long id) {
         return cursoRepository.findById(id);
     }
 }
