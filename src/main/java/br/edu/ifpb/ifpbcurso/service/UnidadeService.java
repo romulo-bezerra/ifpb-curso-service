@@ -34,7 +34,7 @@ public class UnidadeService {
         return unidadeRepository.findAll();
     }
 
-    public Optional<Unidade> buscarPorId(Integer id) {
+    public Optional<Unidade> buscarPorId(Long id) {
         return unidadeRepository.findById(id);
     }
 }
