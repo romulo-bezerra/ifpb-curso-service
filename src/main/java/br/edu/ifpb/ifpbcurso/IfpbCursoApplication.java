@@ -16,6 +16,7 @@ public class IfpbCursoApplication {
 
         Unidade unidade = new Unidade();
         unidade.setNome("teste");
+        unidade.setId(new Long(1));
 
         Disciplina disciplina = new Disciplina();
         disciplina.setAbreviacao("RHT");
@@ -24,6 +25,7 @@ public class IfpbCursoApplication {
         disciplina.setNome("Recursos Humanos no Trabalho");
         disciplina.setPeriodo(6);
         disciplina.setTipo(TipoDisciplina.OBRIGATORIA);
+        disciplina.setId(new Long(1));
 
         Disciplina disciplina1 = new Disciplina();
         disciplina.setAbreviacao("ES");
@@ -32,6 +34,7 @@ public class IfpbCursoApplication {
         disciplina.setNome("Estágio");
         disciplina.setPeriodo(6);
         disciplina.setTipo(TipoDisciplina.OPTATIVA);
+        disciplina1.setId(new Long(2));
 
         Curso curso = new Curso();
         curso.setAbreviacao("ADS");
@@ -42,6 +45,7 @@ public class IfpbCursoApplication {
         curso.setUnidade(unidade);
         curso.addDisciplina(disciplina);
         curso.addDisciplina(disciplina1);
+        curso.setId(new Long(1));
 
         System.out.printf("Estes é o CURSO: " + curso.toString());
 

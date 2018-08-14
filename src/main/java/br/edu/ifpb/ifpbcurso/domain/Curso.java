@@ -15,10 +15,15 @@ public class Curso {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(nullable = false)
     private String nome;
+    @Column(nullable = false)
     private String abreviacao;
+    @Column(nullable = false)
     private int periodos;
+    @Column(nullable = false)
     private String pagina;
+    @Column(nullable = false)
     private String grandeAreaId;
 
     @OneToMany

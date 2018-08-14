@@ -4,10 +4,7 @@ import br.edu.ifpb.ifpbcurso.domain.enums.TipoDisciplina;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -17,11 +14,17 @@ public class Disciplina {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(nullable = false)
     private String nome;
+    @Column(nullable = false)
     private String abreviacao;
+    @Column(nullable = false)
     private int periodo;
+    @Column(nullable = false)
     private TipoDisciplina tipo;
+    @Column(nullable = false)
     private int cargaHoraria;
+    @Column(nullable = false)
     private int aulasSemana;
 
     public Disciplina () {
