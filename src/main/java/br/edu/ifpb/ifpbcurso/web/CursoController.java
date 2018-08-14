@@ -34,7 +34,7 @@ public class CursoController {
     @GetMapping
     public ResponseEntity<Curso> findCursoById(@RequestParam("id") Long id) {
         Optional<Curso> curso = cursoService.buscarPorId(id);
-        if (curso.isPresent()) return ResponseEntity.ok().build();
+        if (curso.isPresent()) return ResponseEntity.ok().body(curso.get());
         else {
             HttpHeaders headers = new HttpHeaders();
             headers.add("message", String.format("Curso de id %d não existe", id));
