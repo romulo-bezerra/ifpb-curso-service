@@ -62,6 +62,7 @@ public class IfpbCursoApplication {
 
         RestoreByCSV.restaurarUnidadesCsv();
         RestoreByCSV.restaurarCursosCsv();
+        RestoreByCSV.restaurarDisciplinasCsv();
 
     }
 }

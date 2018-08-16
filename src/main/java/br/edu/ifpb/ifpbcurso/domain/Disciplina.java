@@ -20,12 +20,15 @@ public class Disciplina {
     private String abreviacao;
     @Column(nullable = false)
     private int periodo;
-    @Column(nullable = false)
+//    @Column(nullable = false)
+    @Enumerated
     private TipoDisciplina tipo;
     @Column(nullable = false)
     private int cargaHoraria;
     @Column(nullable = false)
     private int aulasSemana;
+    @Column(nullable = false)
+    private Long curso;
 
     public Disciplina () {
 

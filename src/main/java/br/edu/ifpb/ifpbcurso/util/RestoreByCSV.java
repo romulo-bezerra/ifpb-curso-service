@@ -77,6 +77,37 @@ public class RestoreByCSV {
         }
     }
 
+    public static void restaurarDisciplinasCsv() {
+
+        List<String[]> lista = LerCSV.lerCsv("/home/romulo/Área de Trabalho/ifpb-curso-service/csv's/disciplina.csv");
+
+        // codigo,curso,descricao,abreviacao,periodo,carga_horaria,aulas_semana
+
+        for (String[] ls: lista){
+
+            Long codigo = Long.parseLong(ls[0]);
+            Long curso = Long.parseLong(ls[1]);
+            String nome = ls[2];
+            String abreviacao = ls[3];
+            int periodo = Integer.parseInt(ls[4]);
+            int cargaHoraria = Integer.parseInt(ls[5]);
+            int aulasSemana = Integer.parseInt(ls[6]);
+
+            Disciplina disciplina = new Disciplina();
+            disciplina.setId(codigo);
+            disciplina.setCurso(curso);
+            disciplina.setNome(nome);
+            disciplina.setAbreviacao(abreviacao);
+            disciplina.setPeriodo(periodo);
+            disciplina.setCargaHoraria(cargaHoraria);
+            disciplina.setAulasSemana(aulasSemana);
+
+            disciplinaService.salvarDisciplina(disciplina);
+
+            disciplina = new Disciplina();
+
+        }
+    }
 
 
 }
