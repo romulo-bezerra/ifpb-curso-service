@@ -12,6 +12,8 @@ import java.util.List;
 @Entity
 public class Curso {
 
+    //codigo,unidade,descricao,abreviacao,periodos
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -21,12 +23,13 @@ public class Curso {
     private String abreviacao;
     @Column(nullable = false)
     private int periodos;
-    @Column(nullable = false)
+//    @Column(nullable = false)
     private String pagina;
-    @Column(nullable = false)
+//    @Column(nullable = false)
     private String grandeAreaId;
 
     @OneToMany
+    @JoinColumn(name="curso")
     private List<Disciplina> disciplinas;
 
     @OneToOne

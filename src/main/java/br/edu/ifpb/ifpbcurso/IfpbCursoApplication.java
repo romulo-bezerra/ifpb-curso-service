@@ -4,9 +4,16 @@ import br.edu.ifpb.ifpbcurso.domain.Curso;
 import br.edu.ifpb.ifpbcurso.domain.Disciplina;
 import br.edu.ifpb.ifpbcurso.domain.Unidade;
 import br.edu.ifpb.ifpbcurso.domain.enums.TipoDisciplina;
+import br.edu.ifpb.ifpbcurso.repository.CursoRepository;
+import br.edu.ifpb.ifpbcurso.service.CursoService;
+import br.edu.ifpb.ifpbcurso.util.LerCSV;
+import br.edu.ifpb.ifpbcurso.util.RestoreByCSV;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
@@ -46,9 +53,15 @@ public class IfpbCursoApplication {
 //        curso.addDisciplina(disciplina);
 //        curso.addDisciplina(disciplina1);
 //        curso.setId(new Long(1));
-//
+
 //        System.out.printf("Estes é o CURSO: " + curso.toString());
 
         SpringApplication.run(IfpbCursoApplication.class, args);
+
+
+
+        RestoreByCSV.restaurarUnidadesCsv();
+        RestoreByCSV.restaurarCursosCsv();
+
     }
 }
