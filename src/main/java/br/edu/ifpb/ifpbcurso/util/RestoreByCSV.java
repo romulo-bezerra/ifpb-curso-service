@@ -14,9 +14,7 @@ import java.util.List;
 public class RestoreByCSV {
 
     private static CursoService cursoService;
-
     private static DisciplinaService disciplinaService;
-
     private static UnidadeService unidadeService;
 
     public RestoreByCSV (CursoService cursoService, DisciplinaService disciplinaService, UnidadeService unidadeService) {
@@ -52,7 +50,9 @@ public class RestoreByCSV {
 
         //codigo,unidade,descricao,abreviacao,periodos
 
-        for (String[] ls: lista){
+        for (String[] ls: lista) {
+
+            System.out.println("\nCodigo= "+ls[0]+" unidae= "+ls[1]+" nome= "+ls[2]+" abreviacao= "+ls[3]+" periodos= "+ls[4]+"\n");
 
             Long codigo = Long.parseLong(ls[0]);
             Long unidadeId = Long.parseLong(ls[1]);
@@ -69,6 +69,8 @@ public class RestoreByCSV {
             curso.setNome(nome);
             curso.setAbreviacao(abreviacao);
             curso.setPeriodos(periodos);
+
+//            System.out.println(curso.toString()+"\n");
 
             cursoService.salvarCurso(curso);
 
