@@ -1,5 +1,6 @@
 package br.edu.ifpb.ifpbcurso.util;
 
+import br.edu.ifpb.ifpbcurso.config.ApplicationProperties;
 import br.edu.ifpb.ifpbcurso.domain.Curso;
 import br.edu.ifpb.ifpbcurso.domain.Disciplina;
 import br.edu.ifpb.ifpbcurso.domain.Unidade;
@@ -13,19 +14,23 @@ import java.util.List;
 @Component
 public class RestoreByCSV {
 
-    private static CursoService cursoService;
-    private static DisciplinaService disciplinaService;
-    private static UnidadeService unidadeService;
+    private final CursoService cursoService;
+    private final DisciplinaService disciplinaService;
+    private final UnidadeService unidadeService;
+    private final LerCSV lerCSV;
+    private final ApplicationProperties applicationProperties;
 
-    public RestoreByCSV (CursoService cursoService, DisciplinaService disciplinaService, UnidadeService unidadeService) {
+    public RestoreByCSV(CursoService cursoService, DisciplinaService disciplinaService, UnidadeService unidadeService, LerCSV lerCSV, ApplicationProperties applicationProperties) {
         this.cursoService = cursoService;
         this.disciplinaService = disciplinaService;
         this.unidadeService = unidadeService;
+        this.lerCSV = lerCSV;
+        this.applicationProperties = applicationProperties;
     }
 
-    public static void restaurarUnidadesCsv() {
+    public void restaurarUnidadesCsv() {
 
-        List<String[]> lista = LerCSV.lerCsv("/home/romulo/Área de Trabalho/ifpb-curso-service/csv's/unidade.csv");
+        List<String[]> lista = lerCSV.lerCsv(applicationProperties.getCsv().getUnidade());
 
         //codigo,descricao,abreviacao
 
@@ -44,17 +49,17 @@ public class RestoreByCSV {
         }
     }
 
-    public static void restaurarCursosCsv() {
+    public void restaurarCursosCsv() {
 
-        List<String[]> lista = LerCSV.lerCsv("/home/romulo/Área de Trabalho/ifpb-curso-service/csv's/curso.csv");
+
+        List<String[]> lista = lerCSV.lerCsv(applicationProperties.getCsv().getCurso());
 
         //codigo,unidade,descricao,abreviacao,periodos
 
         for (String[] ls: lista) {
 
-            System.out.println("\nCodigo= "+ls[0]+" unidae= "+ls[1]+" nome= "+ls[2]+" abreviacao= "+ls[3]+" periodos= "+ls[4]+"\n");
+            System.out.println("\nCodigo= "+ls[0]+" unidade= "+ls[1]+" nome= "+ls[2]+" abreviacao= "+ls[3]+" periodos= "+ls[4]+"\n");
 
-            Long codigo = Long.parseLong(ls[0]);
             Long unidadeId = Long.parseLong(ls[1]);
             String nome = ls[2];
             String abreviacao = ls[3];
@@ -64,7 +69,6 @@ public class RestoreByCSV {
             unidade.setId(unidadeId);
 
             Curso curso = new Curso();
-            curso.setId(codigo);
             curso.setUnidade(unidade);
             curso.setNome(nome);
             curso.setAbreviacao(abreviacao);
@@ -74,21 +78,20 @@ public class RestoreByCSV {
 
             cursoService.salvarCurso(curso);
 
-            curso = new Curso();
-
         }
     }
 
-    public static void restaurarDisciplinasCsv() {
+    public void restaurarDisciplinasCsv() {
 
-        List<String[]> lista = LerCSV.lerCsv("/home/romulo/Área de Trabalho/ifpb-curso-service/csv's/disciplina.csv");
+        List<String[]> lista = lerCSV.lerCsv(applicationProperties.getCsv().getDisciplina());
 
         // codigo,curso,descricao,abreviacao,periodo,carga_horaria,aulas_semana
 
         for (String[] ls: lista){
 
             Long codigo = Long.parseLong(ls[0]);
-            Long curso = Long.parseLong(ls[1]);
+            Curso curso = new Curso();
+            curso.setId(Long.parseLong(ls[1]));
             String nome = ls[2];
             String abreviacao = ls[3];
             int periodo = Integer.parseInt(ls[4]);
@@ -105,8 +108,6 @@ public class RestoreByCSV {
             disciplina.setAulasSemana(aulasSemana);
 
             disciplinaService.salvarDisciplina(disciplina);
-
-            disciplina = new Disciplina();
 
         }
     }

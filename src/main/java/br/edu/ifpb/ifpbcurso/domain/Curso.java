@@ -14,8 +14,9 @@ public class Curso {
 
     //codigo,unidade,descricao,abreviacao,periodos
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Idit
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "curso_sequence_gen")
+    @SequenceGenerator(initialValue = 1, schema = "public", sequenceName = "curso_sequence", name = "curso_sequence_gen", allocationSize = 1)
     private Long id;
     @Column(nullable = false)
     private String nome;
@@ -32,7 +33,7 @@ public class Curso {
     @JoinColumn(name="curso")
     private List<Disciplina> disciplinas;
 
-    @OneToOne
+    @ManyToOne
     private Unidade unidade;
 
     public Curso () {

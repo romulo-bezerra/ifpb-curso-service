@@ -12,7 +12,8 @@ import javax.persistence.*;
 public class Disciplina {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "disciplinas_sequence_gen")
+    @SequenceGenerator(initialValue = 1, schema = "public", sequenceName = "disciplina_sequence", name = "disciplinas_sequence_gen", allocationSize = 1)
     private Long id;
     @Column(nullable = false)
     private String nome;
@@ -27,8 +28,8 @@ public class Disciplina {
     private int cargaHoraria;
     @Column(nullable = false)
     private int aulasSemana;
-    @Column(nullable = false)
-    private Long curso;
+    @ManyToOne
+    private Curso curso;
 
     public Disciplina () {
 

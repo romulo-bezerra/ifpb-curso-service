@@ -1,5 +1,8 @@
 package br.edu.ifpb.ifpbcurso.util;
 
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.stereotype.Component;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -7,13 +10,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class LerCSV {
 
-    public static List<String[]> lerCsv(String caminho){
+    public List<String[]> lerCsv(String arquivo){
 
         List<String[]> retorno = new ArrayList<>();
-
-        String csvArquivo = caminho;
 
         BufferedReader conteudoCsv = null;
 
@@ -22,7 +24,7 @@ public class LerCSV {
         String csvSeparadorCampo = ",";
 
         try {
-            conteudoCsv = new BufferedReader(new FileReader(csvArquivo));
+            conteudoCsv = new BufferedReader(new FileReader(new ClassPathResource(arquivo).getFile()));
             while ((linha = conteudoCsv.readLine()) != null) {
 
                 String[] moeda = linha.split(csvSeparadorCampo);

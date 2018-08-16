@@ -11,7 +11,8 @@ import javax.persistence.*;
 public class Unidade {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "unidade_sequence_gen")
+    @SequenceGenerator(initialValue = 1, schema = "public", sequenceName = "unidade_sequence", name = "unidade_sequence_gen", allocationSize = 1)
     private Long id;
 //    @Column(nullable = false)
     private String nome;
