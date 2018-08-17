@@ -14,7 +14,7 @@ public class Curso {
 
     //codigo,unidade,descricao,abreviacao,periodos
 
-    @Idit
+    @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "curso_sequence_gen")
     @SequenceGenerator(initialValue = 1, schema = "public", sequenceName = "curso_sequence", name = "curso_sequence_gen", allocationSize = 1)
     private Long id;
