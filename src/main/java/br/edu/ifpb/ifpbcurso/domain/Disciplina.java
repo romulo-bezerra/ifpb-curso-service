@@ -1,6 +1,8 @@
 package br.edu.ifpb.ifpbcurso.domain;
 
 import br.edu.ifpb.ifpbcurso.domain.enums.TipoDisciplina;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,6 +11,9 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Disciplina {
 
     @Id
@@ -28,6 +33,7 @@ public class Disciplina {
     private int cargaHoraria;
     @Column(nullable = false)
     private int aulasSemana;
+
     @ManyToOne
     private Curso curso;
 

@@ -16,9 +16,7 @@ public class CursoService {
         this.cursoRepository = cursoRepository;
     }
 
-    public Curso salvarCurso(Curso curso) {
-        return cursoRepository.save(curso);
-    }
+    public Curso salvarCurso(Curso curso) { return cursoRepository.save(curso); }
 
     public Curso atualizarCurso(Curso cursoAtualizado) {
         return cursoRepository.save(cursoAtualizado);

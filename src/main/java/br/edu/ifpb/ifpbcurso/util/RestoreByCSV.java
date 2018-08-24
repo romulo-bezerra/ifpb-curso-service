@@ -10,6 +10,7 @@ import br.edu.ifpb.ifpbcurso.service.UnidadeService;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class RestoreByCSV {
@@ -109,6 +110,19 @@ public class RestoreByCSV {
 
             disciplinaService.salvarDisciplina(disciplina);
 
+        }
+    }
+
+    public void restaurarRelacionamentoCursoDisciplinas() {
+
+        for(Curso curso : cursoService.listarTodos()) {
+            Optional<List<Disciplina>> disciplinasDoCurso = disciplinaService.findByCursoId(curso.getId());
+            Curso cursoAux = curso;
+            if(disciplinasDoCurso.isPresent()) {
+                cursoAux.setDisciplinas(disciplinasDoCurso.get());
+                cursoService.atualizarCurso(cursoAux);
+
+            }
         }
     }
 

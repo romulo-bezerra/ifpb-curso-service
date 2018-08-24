@@ -1,6 +1,5 @@
 package br.edu.ifpb.ifpbcurso.web;
 
-
 import br.edu.ifpb.ifpbcurso.domain.Curso;
 import br.edu.ifpb.ifpbcurso.service.CursoService;
 import org.springframework.http.HttpHeaders;
@@ -34,6 +33,12 @@ public class CursoController {
     @GetMapping
     public ResponseEntity<Curso> findCursoById(@RequestParam("id") Long id) {
         Optional<Curso> curso = cursoService.buscarPorId(id);
+
+
+        System.out.println("DISCIPLINAS DO CURSO SELECIONADO");
+        System.out.println(curso.get().getDisciplinas());
+
+
         if (curso.isPresent()) return ResponseEntity.ok().body(curso.get());
         else {
             HttpHeaders headers = new HttpHeaders();

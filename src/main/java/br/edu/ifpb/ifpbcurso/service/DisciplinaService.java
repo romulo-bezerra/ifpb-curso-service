@@ -32,6 +32,10 @@ public class DisciplinaService {
         return disciplinaRepository.findAll();
     }
 
+    public Optional<List<Disciplina>> findByCursoId(Long cursoId) {
+        return disciplinaRepository.findByCursoId(cursoId);
+    }
+
     public Optional<Disciplina> buscarPorId(Long id) {
         return disciplinaRepository.findById(id);
     }

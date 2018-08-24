@@ -19,6 +19,7 @@ public class ApplicationInit implements ApplicationListener<ContextRefreshedEven
         restoreByCSV.restaurarUnidadesCsv();
         restoreByCSV.restaurarCursosCsv();
         restoreByCSV.restaurarDisciplinasCsv();
+        restoreByCSV.restaurarRelacionamentoCursoDisciplinas();
     }
 
 }
